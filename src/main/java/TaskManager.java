@@ -41,7 +41,6 @@ public class TaskManager {
         Epic epic = epics.get(subtask.getEpicId());
         if (epic != null) {
             epic.addSubtaskId(subtask.getId());
-            // Пересчитываем статус эпика (в случае, если нужна актуализация)
             updateEpicStatus(epic);
         }
 
@@ -81,7 +80,7 @@ public class TaskManager {
         subtasks.clear();
     }
 
-    // --- Получение задачи/эпика/подзадачи по id ---
+    // --- Получение задачи эпика подзадачи по id
     public Task getTaskById(int id) {
         return tasks.get(id);
     }
@@ -94,7 +93,7 @@ public class TaskManager {
         return subtasks.get(id);
     }
 
-    // --- Удаление задачи/эпика/подзадачи по id ---
+    // --- Удаление задачи/эпика/подзадачи по id
     public void removeTaskById(int id) {
         tasks.remove(id);
     }
@@ -119,7 +118,7 @@ public class TaskManager {
         }
     }
 
-    // --- Обновление задач ---
+    // Обновление задач
     public void updateTask(Task updatedTask) {
         if (tasks.containsKey(updatedTask.getId())) {
             tasks.put(updatedTask.getId(), updatedTask);
@@ -173,9 +172,7 @@ public class TaskManager {
         }
     }
 
-    /**
-     * Получаем все подзадачи конкретного эпика
-     */
+
     public List<Subtask> getSubtasksOfEpic(int epicId) {
         Epic epic = epics.get(epicId);
         List<Subtask> result = new ArrayList<>();
@@ -190,9 +187,6 @@ public class TaskManager {
         return result;
     }
 
-    /**
-     * Пересчитываем статус эпика в зависимости от статусов подзадач
-     */
     private void updateEpicStatus(Epic epic) {
         List<Integer> subtaskIds = epic.getSubtaskIds();
         if (subtaskIds.isEmpty()) {
