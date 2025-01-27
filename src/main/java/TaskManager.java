@@ -12,28 +12,26 @@ public class TaskManager {
     private final Map<Integer, Epic> epics = new HashMap<>();
     private final Map<Integer, Subtask> subtasks = new HashMap<>();
 
-    private int nextId = 1; // счетчик для ид
+    private int nextId = 0; // счетчик для ид
 
 
-    public Task createTask(Task task) {
+    public void createTask(Task task) {
         task.setId(nextId++);
         tasks.put(task.getId(), task);
-        return task;
     }
 
     /**
      * Создаёт эпик
      */
-    public Epic createEpic(Epic epic) {
+    public void createEpic(Epic epic) {
         epic.setId(nextId++);
         epics.put(epic.getId(), epic);
-        return epic;
     }
 
     /**
      * Создаёт подзадачу
      */
-    public Subtask createSubtask(Subtask subtask) {
+    public void createSubtask(Subtask subtask) {
         subtask.setId(nextId++);
         subtasks.put(subtask.getId(), subtask);
 
@@ -43,8 +41,6 @@ public class TaskManager {
             epic.addSubtaskId(subtask.getId());
             updateEpicStatus(epic);
         }
-
-        return subtask;
     }
 
     // --- Получение всех задач ---

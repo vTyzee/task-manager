@@ -1,8 +1,8 @@
 public class Task {
-    protected int id;             // Идентификатор задачи
-    protected String name;        // Название задачи
-    protected String description; // Описание задачи
-    protected Status status;      // Статус задачи
+    private int id;             // Идентификатор задачи
+    private String name;        // Название задачи
+    private String description; // Описание задачи
+    private Status status;      // Статус задачи
 
     public Task(String name, String description) {
         this.name = name;
