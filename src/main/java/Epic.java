@@ -1,16 +1,15 @@
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class Epic extends Task {
     // Храним идентификаторы всех подзадач этого эпика
     private final List<Integer> subtaskIds = new ArrayList<>();
 
     public Epic(String name, String description) {
         super(name, description);
-    }
-
-    public List<Integer> getSubtaskIds() {
-        return subtaskIds;
     }
 
     public void addSubtaskId(int subtaskId) {
