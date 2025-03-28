@@ -5,7 +5,7 @@ import java.util.List;
 
 @Getter
 public class Epic extends Task {
-    // Храним идентификаторы всех подзадач этого эпика
+    // Храним айдишники всех подзадач этого эпика
     private final List<Integer> subtaskIds = new ArrayList<>();
 
     public Epic(String name, String description) {
